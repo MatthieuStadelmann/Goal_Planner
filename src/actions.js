@@ -1,18 +1,25 @@
+import axios from './axios';
 
-//Push, remove, move cards
-
-export function pushCard(card) {
-  return {type: "PUSH_CARD", card: card}
+export function addTask(task, day) {
+  var obj = {
+    task: task,
+    day: day
+  }
+  return axios.post('/addTask', obj).then(() => {
+    console.log("MY OBJ", obj)
+    return {type:'ADD_TASK', obj}
+  })
 };
 
-export function removeCard(index) {
-  return {type: "REMOVE_CARD", index: index}
+export function getTasks() {
+  return axios.get('/getTasks').then((data) => {
+    return {type: 'GET_TASKS', tasks: data.data.tasks};
+  })
 };
 
-export function moveCard(dragIndex, hoverIndex) {
-  return {
-    type: "MOVE_CARD",
-    dragIndex: dragIndex,
-    hoverIndex: hoverIndex
-    }
+export function deleteTask(task) {
+  return axios.post('/deleteTask').then((results) => {
+    console.log(results)
+   return {type: 'DELETE_TASK', task: task}
+  })
 };

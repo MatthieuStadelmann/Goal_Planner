@@ -1,32 +1,28 @@
-import update from 'react/lib/update';
-
-export default function(state={}, action) {
-
-  if (action.type = "PUSH_CARD") {
-    state = Object.assign({
-      cards: state.cards.update({
-        $push: [card]
-      })
-    })
-  }
-
-  if (action.type = "REMOVE_CARD") {
-    state = Object.assign({
-      cards: state.cards.splice([
-        [index, 1]
-      ])
-    })
-  }
-
-if (action.type = "MOVE_CARD") {
-  state = Object.assign({
-    cards: state.cards.update({
-      $splice: [
-        [dragIndex, 1],
-        [hoverIndex, 0, cards[dragIndex]]
-      ]
-    })
-  })
+const defaultState = {
+  tasks: []
 }
+
+export default function(state = defaultState, action) {
+
+  if (action.type == 'ADD_TASK') {
+    state = Object.assign({}, state, {
+      tasks: state.tasks.concat(action.obj)
+    });
+  }
+  
+  if (action.type == 'GET_TASKS') {
+    console.log('inside get task reducer', action)
+    state = Object.assign({}, state, {tasks: action.tasks});
+  }
+
+
+  // DELETE TASK NEED TO GET SOME MORE WORK
+  // if (action.type == 'DELETE_TASK') {
+  //   state = Object.assign({}, state, {
+  //       tasks: state.tasks.filter(task => {
+  //         return user.id !== task
+  //       })
+  //     });
+  //   }
   return state
 }
