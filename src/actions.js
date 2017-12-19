@@ -1,7 +1,5 @@
 import axios from './axios';
-
 export function addTask(task, day) {
-
   var newTask = {
     taskname: task,
     day: day

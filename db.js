@@ -3,6 +3,38 @@ var spicedPg = require('spiced-pg');
 var db = spicedPg(process.env.DATABASE_URL || 'postgres:postgres:postgres@localhost:5432/teambased');
 var path = require("path");
 
+//USERS MANAGEMEMT==============================================================
+//Function insertNewUser===
+function insertNewUser(first, last, email, password) {
+  return db.query('INSERT INTO users (first, last, email, password) VALUES ($1, $2, $3, $4) RETURNING id', [
+    first, last, email || null,
+    password || null
+  ]).then((results) => {
+    return results.rows[0].id
+  })
+};
+exports.insertNewUser = insertNewUser;
+//function getHashed===
+function getHashed(email) {
+  const query = `SELECT password FROM users WHERE email = $1`;
+  const params = [email];
+  return db.query(query, params).then((results) => {
+    return results.rows[0].password
+  })
+};
+exports.getHashed = getHashed;
+
+// function searchInfos===
+function searchInfos(email) {
+  const query = `SELECT id FROM users WHERE email = $1`
+  const params = [email]
+  return db.query(query, params).then((results) => {
+    return results.rows[0]
+  })
+};
+exports.searchInfos = searchInfos;
+
+//TASKS MANAGEMENT==============================================================
 //ADD Task====
 function addTask(taskName, day) {
   const query = `
