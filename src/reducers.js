@@ -19,10 +19,11 @@ export default function(state = defaultState, action) {
 
   // DELETE TASK NEED TO GET SOME MORE WORK
   if (action.type == 'DELETE_TASK') {
-    console.log('inside delete task', action)
+
     state = Object.assign({}, state, {
         tasks: state.tasks.filter(task => {
-          return task.taskId !== task.taskId
+            console.log('inside delete task', action, task)
+          return task.id !== action.taskId
         })
       });
       console.log('my state', state)

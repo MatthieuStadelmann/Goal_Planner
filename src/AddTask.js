@@ -14,6 +14,7 @@ export class AddTask extends React.Component {
 
   handleChange(e) {
     this.setState({text: e.target.value})
+
   }
   render() {
 
