@@ -30,3 +30,8 @@
 .planningday h2 {
   border-bottom: 1px solid black;
 }
+
+.task {
+  border: 1px solid black;
+  margin: 3px;
+}

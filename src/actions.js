@@ -1,13 +1,15 @@
 import axios from './axios';
 
 export function addTask(task, day) {
-  var obj = {
-    task: task,
+
+  var newTask = {
+    taskname: task,
     day: day
   }
-  return axios.post('/addTask', obj).then(() => {
-    console.log("MY OBJ", obj)
-    return {type:'ADD_TASK', obj}
+  return axios.post('/addTask', newTask).then((data) => {
+    console.log('newTask', newTask)
+    newTask.id = data.data.id;
+    return {type:'ADD_TASK', newTask}
   })
 };
 
@@ -17,9 +19,8 @@ export function getTasks() {
   })
 };
 
-export function deleteTask(task) {
-  return axios.post('/deleteTask').then((results) => {
-    console.log(results)
-   return {type: 'DELETE_TASK', task: task}
+export function deleteTask(taskId) {
+  return axios.post('/deleteTask/' + taskId).then((results) => {
+   return {type: 'DELETE_TASK', taskId: taskId}
   })
 };

@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Todo} from './Todo';
 import AddTask from './AddTask';
-import {getTasks} from './actions';
+import {getTasks, deleteTask} from './actions';
+import DeleteTask from './DeleteTask';
 
 class TaskList extends React.Component {
 
@@ -10,7 +11,6 @@ class TaskList extends React.Component {
     super(props);
     this.state = {}
   }
-
   componentDidMount() {
 
     this.props.getTasks();
@@ -18,64 +18,69 @@ class TaskList extends React.Component {
 
   render() {
 
-    const { monday, tuesday, wednesday, thursday, friday } = this.props;
+    const {monday, tuesday, wednesday, thursday, friday} = this.props;
 
-    console.log('MES CONSTANTES', this.props)
+    console.log('this.props list', this.props)
 
     return (<div className='tasklistcontainer'>
       <div className='planningday'>
         <h2>MONDAY</h2>
-        <div className='task'>
-        {
-        monday && monday.map((monday, index) => <div key={index}>
-              <p>{monday.tasks}</p>
-          </div>)
-        }
-          </div>
+        <div className='tasks'>
+          {
+            monday && monday.map((mondayTask, index) => <div className='task' key={index}>
+              <p>{mondayTask.taskname}</p>
+              <DeleteTask taskId={mondayTask.id}/>
+            </div>)
+          }
+        </div>
         <AddTask day='MONDAY'/>
       </div>
       <div className='planningday'>
         <h2>TUESDAY</h2>
+          <div className='tasks'>
         {
-          tuesday && tuesday.map((tuesday, index) => <div key={index}>
-            <div className='task'>
-              <p>{tuesday.tasks}</p>
-            </div>
+          tuesday && tuesday.map((tuesdayTask, index) => <div className='task' key={index}>
+              <p>{tuesdayTask.taskname}</p>
+              <DeleteTask taskId={tuesdayTask.id}/>
           </div>)
         }
+          </div>
         <AddTask day='TUESDAY'/>
       </div>
       <div className='planningday'>
         <h2>WEDNESDAY</h2>
+        <div className='tasks'>
         {
-          wednesday && wednesday.map((wednesday, index) => <div key={index}>
-            <div className='task'>
-              <p>{wednesday.tasks}</p>
-            </div>
+          wednesday && wednesday.map((wednesdayTask, index) => <div className='task' key={index}>
+              <p>{wednesdayTask.taskname}</p>
+              <DeleteTask taskId={wednesdayTask.id}/>
           </div>)
         }
+          </div>
         <AddTask day='WEDNESDAY'/>
       </div>
       <div className='planningday'>
         <h2>THURSDAY</h2>
+            <div className='tasks'>
         {
-        thursday && thursday.map((thursday, index) => <div key={index}>
-            <div className='task'>
-              <p>{thursday.tasks}</p>
-            </div>
+          thursday && thursday.map((thursdayTask, index) => <div className='task' key={index}>
+              <p>{thursdayTask.taskname}</p>
+              <DeleteTask taskId={thursdayTask.id}/>
           </div>)
         }
+        </div>
         <AddTask day='THURSDAY'/>
       </div>
       <div className='planningday'>
         <h2>FRIDAY</h2>
+            <div className='tasks'>
         {
-        friday && friday.map((friday, index) => <div key={index}>
-            <div className='task'>
-              <p>{friday.tasks}</p>
-            </div>
+          friday && friday.map((fridayTask, index) => <div className='task' key={index}>
+              <p>{fridayTask.taskname}</p>
+              <DeleteTask taskId={fridayTask.id}/>
           </div>)
         }
+          </div>
         <AddTask day='FRIDAY'/>
       </div>
     </div>)
@@ -84,7 +89,6 @@ class TaskList extends React.Component {
 
 const mapStateToProps = (state) => {
 
-  console.log('my state', state)
 
   return {
     monday: state.tasks && state.tasks.filter(task => task.day == 'MONDAY'),

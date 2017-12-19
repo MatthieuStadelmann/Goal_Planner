@@ -22,10 +22,10 @@ app.use(express.static('./public'));
 //ADD TASK===
 const addTask = db.addTask;
 app.post('/addTask', (req, res) => {
-  let task = req.body.task;
+  let task = req.body.taskname;
   let day = req.body.day;
-  addTask(task, day).then(() => {
-    res.json({success: true})
+  addTask(task, day).then((results) => {
+    res.json({id: results.id})
   }).catch((err) => {
     console.log(err)
   })
@@ -35,7 +35,19 @@ app.post('/addTask', (req, res) => {
 const getTasks = db.getTasks;
 app.get('/getTasks', (req, res) => {
   getTasks().then((tasks) => {
+    console.log('GET TASK', tasks)
     res.json({tasks: tasks})
+  }).catch((err) => {
+    console.log(err)
+  })
+});
+
+//Delete TASKS===
+const delTask = db.delTask;
+app.post('/deleteTask/:taskId', (req, res) => {
+  let taskId = req.params.taskId
+  delTask(taskId).then(() => {
+    res.json({success:true})
   }).catch((err) => {
     console.log(err)
   })

@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
-    tasks TEXT NOT NULL,
+    taskName TEXT NOT NULL,
     day TEXT NOT NULL,
     status INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

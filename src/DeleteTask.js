@@ -1,26 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect}  from 'react-redux';
+import { deleteTask } from './actions';
 
- export class DeleteTask extends React.Component {
+class DeleteTask extends React.Component {
 
-   render() {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
-     const { deleteTask } = this.props;
-     return(
-       <div className='taskcontainer'>
-         <button type="button" onClick={() => {
-           this.props.deleteTask()
-         }}>
-           x
-         </button>
-       </div>
-     )
-   }
- }
+  render() {
+    const { deleteTask, taskId } = this.props;
+    console.log('this.props deleteTask', this.props.taskId)
 
- const mapDispatchToProps = (dispatch) => {
-   return {
-     deleteTask: () => dispatch(deleteTask(task))
-   }
- };
- export default connect(mapDispatchToProps)(DeleteTask);
+    return (<div className='taskcontainer'>
+      <button type="button" onClick={() => {
+          deleteTask(taskId)
+        }}>
+        x
+      </button>
+    </div>)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteTask: (taskId) => dispatch(deleteTask(taskId))
+  }
+};
+export default connect(null, mapDispatchToProps)(DeleteTask);

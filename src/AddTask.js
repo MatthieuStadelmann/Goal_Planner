@@ -14,12 +14,10 @@ export class AddTask extends React.Component {
 
   handleChange(e) {
     this.setState({text: e.target.value})
-    console.log('state', this.state.text)
   }
   render() {
 
     const { addTask } = this.props;
-    console.log('this.props', this.props)
 
     return (<div className="add-task">
       <input type="text" value={this.state.value} onChange={this.handleChange}/>
@@ -31,12 +29,9 @@ export class AddTask extends React.Component {
     </div>)
   }
 }
-// const mapStateToProps = (state) => {
-//   return {}
-// };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTask: (task, day) => dispatch(addTask(task, day))
+    addTask: (taskname, day) => dispatch(addTask(taskname, day))
   }
 };
 export default connect(null, mapDispatchToProps)(AddTask);
