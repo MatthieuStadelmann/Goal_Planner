@@ -1,6 +1,9 @@
 const bcrypt = require('bcryptjs');
 
-// check password===============================================================
+
+//AUTH MANAGEMEMT ==============================================================
+
+// check password===
 function checkPassword(password, hashedPassword) {
 
   return new Promise((resolve, reject) => {
@@ -21,7 +24,7 @@ function checkPassword(password, hashedPassword) {
 };
 exports.checkPassword = checkPassword;
 
-// hash Password================================================================
+// hash Password===
 
 function hashPassword(plainTextPassword) {
 

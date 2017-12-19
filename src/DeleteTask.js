@@ -11,7 +11,7 @@ class DeleteTask extends React.Component {
 
   render() {
     const { deleteTask, taskId } = this.props;
-    console.log('this.props deleteTask', this.props.taskId)
+  
 
     return (<div className='taskcontainer'>
       <button type="button" onClick={() => {

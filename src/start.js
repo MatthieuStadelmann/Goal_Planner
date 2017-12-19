@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, Link, IndexRoute, browserHistory, Redirect } from 'react-router';
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, Redirect } from 'react-router';
 import { App } from './App';
 import { createStore, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
@@ -10,6 +10,8 @@ import reducer from './reducers';
 import Register from './register';
 import Login from './login';
 import { Welcome } from './welcome';
+import  TeamDuty  from './TeamDuty';
+import { Todo }  from './Todo';
 
 let router;
 
@@ -25,6 +27,8 @@ const notLoggedInRouter = (<Router history={hashHistory}>
 const logedInRouter = (<Provider store={store}>
   <Router history={browserHistory}>
     <Route path="/" component={App}>
+    <Route path="/plan" component={TeamDuty}/>
+    <IndexRoute component={Todo}/>
       <Redirect from="*" to='/'/>
     </Route>
   </Router>
@@ -33,7 +37,7 @@ const logedInRouter = (<Provider store={store}>
 if (location.pathname === '/welcome/') {
   router = notLoggedInRouter
 } else {
-  router = LogedInRouter
+  router = logedInRouter
 }
 
 ReactDOM.render(router, document.querySelector('main'));

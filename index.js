@@ -17,6 +17,7 @@ app.use(cookieSession({
   secret: 'LIVE LONG EAT DÖNER',
   maxAge: 1000 * 60 * 60 * 24 * 14
 }));
+app.use(csurf());
 
 app.use(function(req, res, next) {
   res.cookie('mytoken', req.csrfToken());
@@ -40,7 +41,6 @@ app.get('/welcome/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
   }
 });
-
 //Registration route ===
 const hashPassword = auth.hashPassword;
 const insertNewUser = db.insertNewUser;
@@ -128,8 +128,17 @@ app.post('/deleteTask/:taskId', (req, res) => {
   })
 });
 
-app.get('*', function(req, res){
+app.get('/logout/', (req, res) => {
+  req.session = null;
+  res.redirect('/');
+});
+
+app.get('*', function(req, res) {
+  if (!req.session.user) {
+    res.redirect('/welcome/')
+  } else {
     res.sendFile(__dirname + '/index.html');
+  }
 });
 
 app.listen(8080, function() {

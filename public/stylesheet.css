@@ -35,3 +35,26 @@
   border: 1px solid black;
   margin: 3px;
 }
+
+.welcome img {
+  height: 100px ;
+  width: auto;
+}
+
+.statusHandler {
+  border: 5px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 45px;
+  width: 564px;
+  height: 290px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-top: -142px;
+  margin-left: -297px;
+  z-index: 9999;
+  background: rgb(170, 232, 255);
+}

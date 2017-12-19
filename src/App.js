@@ -5,13 +5,14 @@ import  Tasklist  from './TaskList';
 
 export class App extends React.Component {
 
-  render() {
 
+  render() {
+    const { children } = this.props;
     return (<div className='main'>
       <div className='welcome'>
       <h1>HELLO WORLD</h1>
       <div className='todocontainer'>
-        <Todo />
+        {children}
       </div>
     </div>
     </div>)
