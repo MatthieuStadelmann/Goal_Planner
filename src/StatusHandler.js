@@ -1,54 +1,52 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import  TeamDuty  from './TeamDuty';
+import ReactDOM from 'react-dom';
+import TeamDuty from './TeamDuty';
+import { handleRadioChange, submitOption } from './actions';
+import { RadioGroup, Radio } from 'react-radio-group';
 
-
-export class StatusHandler extends React.Component {
-
+class StatusHandler extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
 
-    const { taskInfos, submitOption, TaskID } = this.props;
+    const {clickedTask, submitOption, selectedOption, handleRadioChange} = this.props;
 
-    console.log('MY VALUE', )
+
+    console.log('this.props jhweljkfa', this.props)
 
     return (<div className='statusHandler'>
-      <span>Task: {taskInfos}</span>
+
       <form>
-     <div className="radio">
-       <label>
-         <input type="radio" value="done" />
-         Done
-       </label>
-     </div>
-     <div className="radio">
-       <label>
-         <input type="radio" value="workInProgress"  />
-         Work in progress
-       </label>
-     </div>
-     <div className="radio">
-       <label>
-         <input type="radio" value="emergency"  />
-         Emergency
-       </label>
-     </div>
-     <button type="button" onClick={(e) => {
-       submitOption(this.state.selectedOption, taskId)
-       }}>
-       Submit
-     </button>
-   </form>
+        <span>Task:{clickedTask.taskname}</span>
+        <RadioGroup name="taskStatus" selectedValue={selectedOption} onChange={handleRadioChange}>
+          <Radio value="done"/>Done
+          <Radio value="workInProgress"/>Work In Progress
+          <Radio value="emergency"/>Emergency
+        </RadioGroup>
+        <button type="button" onClick={(e) => {
+            submitOption(selectedOption, clickedTask.id)
+          }}>
+          Submit
+        </button>
+      </form>
     </div>)
   }
 }
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    // submitOption: () => dispatch.submitOption(option, taskId)
+    handleRadioChange: (selectedOption) => dispatch(handleRadioChange(selectedOption)),
+    submitOption: (selectedOption, taskId) => dispatch(submitOption(selectedOption, taskId))
   }
 };
-export default connect(null, mapDispatchToProps)(StatusHandler);
+
+const mapStateToProps = (state) => {
+  console.log('handlestatus change', state)
+
+  return {
+    selectedOption: state.selectedOption
+  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(StatusHandler);

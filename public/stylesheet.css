@@ -1,7 +1,12 @@
 * {
   margin: 0;
   padding: 0;
-  color: red;
+
+}
+
+.main {
+  height: 100vh;
+
 }
 
 .todocontainer {
@@ -9,52 +14,187 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+}
+
+.nav {
+  height: 80px;
+  display: flex;
+}
+
+.nav h1 {
+  padding-top: 10px;
+  font-family: 'Lato', sans-serif;
+}
+
+.nav img {
+  padding-top: 10px;
+  height: 60px;
+  margin-left: 20px;
 }
 
 .todo {
-  border: 5px solid black;
+  border-color: white;
   height: 600px;
-  width: 900px;
+  width: 1350px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .tasklistcontainer {
   display: flex;
   flex-direction: row;
+
+
 }
 .planningday {
-  border: 1px solid black;
-  width: 200px;
+  padding: 15px;
+  width: 300px;
   height: 600px;
+  font-family: 'helvetica neue';
 }
 
 .planningday h2 {
+  padding-bottom: 10px;
   border-bottom: 1px solid black;
 }
 
 .task {
-  border: 1px solid black;
-  margin: 3px;
+  border: 2px solid black;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  width: 211px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 10px;
+
+}
+.tasknull {
+  margin: 10px;
+  border: 2px solid black;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  width: 211px;
+  height: 50px;
+  border-radius: 10px;
+
 }
 
-.welcome img {
-  height: 100px ;
+.task1 {
+  margin: 10px;
+  border: 2px solid black;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  width: 211px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(78, 129, 217);
+}
+
+.task2 {
+  margin: 10px;
+  border: 2px solid black;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  width: 211px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(255, 243, 80);
+}
+
+.task3 {
+  margin: 10px;
+  border: 2px solid black;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  width: 211px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(238, 68, 68);
+}
+
+p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.add-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.add-task button {
+  width: 100px;
+  margin-left: 70px;
+
+}
+/*.welcome img {
+  height: 400px;
   width: auto;
+}*/
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
 }
 
 .statusHandler {
-  border: 5px solid black;
+color: white;
+  font-family: 'helvetica neue';
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 45px;
+  font-size: 30px;
   width: 564px;
-  height: 290px;
+  height: 250px;
   position: absolute;
-  top: 55%;
+  top: 47%;
   left: 50%;
   margin-top: -142px;
   margin-left: -297px;
   z-index: 9999;
-  background: rgb(170, 232, 255);
+  background: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 9999;
+  background-color: rgb(141, 150, 158);
+
+}
+
+input {
+  background: transparent;
+  color: black;
+  border: 2px solid black;
+  font-family: 'helvetica neue';
+  margin: 4px;
+  padding-left: 3px;
+  border-radius: 10px;
+}
+button {
+  color: black;
+  background: none;
+  padding: 2px;
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
 }

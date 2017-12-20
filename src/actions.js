@@ -25,6 +25,25 @@ export function deleteTask(taskId) {
 };
 
 export function handleTask(task) {
-console.log("MY TASk", task)
+  console.log("MY TASk", task)
   return {type: 'HANDLE_TASK', task: task}
 };
+
+export function handleRadioChange(selectedOption) {
+console.log('inside handleRadioChange', selectedOption)
+  return {type: 'HANDLE_RADIO_CHANGE', selectedOption: selectedOption}
+};
+
+export function submitOption(option, taskId) {
+
+  var status = {
+    taskStatus: option
+  }
+  return axios.post('/updateTaskStatus/' + taskId, status).then((results) => {
+  return {
+    type: 'UPDATE_TASK_STATUS',
+    status: results.data.status,
+    id: results.data.id
+   }
+  })
+}

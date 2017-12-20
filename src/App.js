@@ -1,20 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Todo } from './Todo';
-import  Tasklist  from './TaskList';
+import {connect} from 'react-redux';
+import {Todo} from './Todo';
+import Tasklist from './TaskList';
 
 export class App extends React.Component {
 
-
   render() {
-    const { children } = this.props;
+    const {children} = this.props;
     return (<div className='main'>
       <div className='welcome'>
-      <h1>HELLO WORLD</h1>
-      <div className='todocontainer'>
-        {children}
+        <div className='nav'>
+          <img src='/images/lavender.svg'/>
+          <h1>LAVENDER GOAL PLANNER</h1>
+        </div>
+        <div className='todocontainer'>
+          {children}
+        </div>
       </div>
-    </div>
     </div>)
 
   }

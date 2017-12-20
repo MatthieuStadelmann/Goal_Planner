@@ -50,7 +50,7 @@ exports.addTask = addTask;
 //GET TASKS====
 function getTasks() {
   const query = `
-  SELECT taskName, day, id FROM tasks`
+  SELECT taskName, day, id, status FROM tasks`
   return db.query(query).then((results) => {
     return results.rows
   })
@@ -66,5 +66,20 @@ function delTask(id) {
   const params = [id]
   return db.query(query, params)
 };
-
 exports.delTask = delTask;
+
+//UPDATE task===
+function updateTaskStatus(status, id) {
+  const query = `
+    UPDATE tasks
+    set status = $1
+    WHERE id = $2
+    RETURNING status, id
+  `
+  const params = [status, id]
+  return db.query(query, params).then((results) => {
+    return results.rows[0]
+  })
+
+};
+exports.updateTaskStatus = updateTaskStatus;

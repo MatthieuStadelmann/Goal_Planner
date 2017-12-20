@@ -21,12 +21,12 @@ export class AddTask extends React.Component {
     const { addTask } = this.props;
 
     return (<div className="add-task">
-      <input type="text" value={this.state.value} onChange={this.handleChange}/>
       <button type="button" onClick={(e) => {
           this.props.addTask(this.state.text, this.props.day)
         }}>
-        Add
+        ADD GOAL
       </button>
+      <input type="text" value={this.state.value} onChange={this.handleChange}/>
     </div>)
   }
 }

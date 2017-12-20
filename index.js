@@ -120,9 +120,37 @@ app.get('/getTasks', (req, res) => {
 //Delete TASKS===
 const delTask = db.delTask;
 app.post('/deleteTask/:taskId', (req, res) => {
-  let taskId = req.params.taskId
+  let taskId = req.params.taskId;
   delTask(taskId).then(() => {
     res.json({success:true})
+  }).catch((err) => {
+    console.log(err)
+  })
+});
+
+//Update Status===
+const updateTaskStatus = db.updateTaskStatus;
+app.post('/updateTaskStatus/:taskId', (req, res) => {
+
+  let taskId = req.params.taskId;
+  let selectedValue = req.body.taskStatus;
+  let status;
+
+  if (selectedValue == 'done') {
+      status = 1;
+  }
+  if (selectedValue == 'workInProgress') {
+      status = 2;
+  }
+  if (selectedValue == 'emergency') {
+      status = 3;
+  }
+
+  updateTaskStatus(status, taskId).then((results) => {
+    res.json({
+      status: results.status,
+      id: results.id
+    })
   }).catch((err) => {
     console.log(err)
   })

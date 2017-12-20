@@ -4,8 +4,8 @@ export default function Logo() {
 
   return (
 
-    <div className="logo">
-      <img src="/images/cloud-2.svg" />
+    <div className="mainlogo">
+      <img src='/images/lavender.svg' />
     </div>
   )
 }

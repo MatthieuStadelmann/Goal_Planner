@@ -1,7 +1,8 @@
 const defaultState = {
   tasks: [],
   statusHandlerIsVisible: false,
-  clickedTask: []
+  clickedTask: [],
+  selectedOption: 'workInProgress'
 }
 
 export default function(state = defaultState, action) {
@@ -17,18 +18,36 @@ export default function(state = defaultState, action) {
   if (action.type == 'DELETE_TASK') {
 
     state = Object.assign({}, state, {
-        tasks: state.tasks.filter(task => {
-          return task.id !== action.taskId
-        })
-      });
-    }
+      tasks: state.tasks.filter(task => {
+        return task.id !== action.taskId
+      })
+    });
+  }
+
   if (action.type == 'HANDLE_TASK') {
-    state = Object.assign({}, state, {
-      clickedTask: state.clickedTask.concat(action.task).filter(task => {
-        return task == action.task
-      }),
-      statusHandlerIsVisible: !state.statusHandlerIsVisible
-    })
+    for (var i = 0; i < state.tasks.length; i++) {
+      if (state.tasks[i].id == action.task.id) {
+        state = Object.assign({}, state, {
+          clickedTask: state.tasks[i],
+          statusHandlerIsVisible: !state.statusHandlerIsVisible,
+        })
+      }
+    }
+  }
+
+  if (action.type == 'HANDLE_RADIO_CHANGE') {
+    state = Object.assign({}, state, {selectedOption: action.selectedOption})
+  }
+
+  if (action.type == 'UPDATE_TASK_STATUS') {
+    for (var i = 0; i < state.tasks.length; i++) {
+      if (state.tasks[i].id == action.id) {
+        state = Object.assign({}, state, {
+          task: state.tasks[i].status = action.status,
+          statusHandlerIsVisible: !state.statusHandlerIsVisible
+        })
+      }
+    }
   }
   return state
 }
