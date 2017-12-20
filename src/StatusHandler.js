@@ -7,33 +7,32 @@ export class StatusHandler extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
   }
 
   render() {
 
-    const { taskInfos, submitOption } = this.props;
+    const { taskInfos, submitOption, TaskID } = this.props;
 
-    console.log('statusHandler', this.props)
+    console.log('MY VALUE', )
 
     return (<div className='statusHandler'>
       <span>Task: {taskInfos}</span>
       <form>
      <div className="radio">
        <label>
-         <input type="radio" value="done" checked={this.state.selectedOption === 'done'} />
+         <input type="radio" value="done" />
          Done
        </label>
      </div>
      <div className="radio">
        <label>
-         <input type="radio" value="workInProgress" checked={this.state.selectedOption === 'workInProgress'} />
+         <input type="radio" value="workInProgress"  />
          Work in progress
        </label>
      </div>
      <div className="radio">
        <label>
-         <input type="radio" value="emergency" checked={this.state.selectedOption === 'emergency'} />
+         <input type="radio" value="emergency"  />
          Emergency
        </label>
      </div>
@@ -49,7 +48,7 @@ export class StatusHandler extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitOption: () => dispatch.submitOption(option, taskId)
+    // submitOption: () => dispatch.submitOption(option, taskId)
   }
 };
 export default connect(null, mapDispatchToProps)(StatusHandler);

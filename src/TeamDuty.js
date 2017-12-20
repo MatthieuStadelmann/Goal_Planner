@@ -1,33 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Todo } from './Todo';
-import { getTasks } from './actions';
+import { getTasks, handleTask } from './actions';
 import { StatusHandler } from './StatusHandler';
 
 class TeamDuty extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      statusHandlerIsVisible: false
-    }
-    this.handleTask = this.handleTask.bind(this)
-  }
 
-  handleTask(e) {
-  this.setState(prevState => ({
-    statusHandlerIsVisible: !prevState.statusHandlerIsVisible
-  }));
-    console.log("MY VALUE", e.target)
-}
+  };
+
   componentDidMount() {
-
     this.props.getTasks();
   };
 
   render() {
 
-    const {monday, tuesday, wednesday, thursday, friday} = this.props;
+    const {monday, tuesday, wednesday, thursday, friday, clickedTask, handleTask, statusHandlerIsVisible} = this.props;
+    console.log('this.props', this.props)
 
     return (<div className='tasklistcontainer'>
       <div className='planningday'>
@@ -35,10 +26,10 @@ class TeamDuty extends React.Component {
         <div className='tasks'>
           {
             monday && monday.map((mondayTask, index) => <div className='task' key={index}>
-              <span onClick={this.handleTask}>{mondayTask.taskname}</span>
-              {this.state.statusHandlerIsVisible && <StatusHandler value={mondayTask.id} taskInfos= {mondayTask.taskname} />}
+              <span onClick={e => handleTask(mondayTask.taskname)}>{mondayTask.taskname}</span>
             </div>)
           }
+
         </div>
       </div>
       <div className='planningday'>
@@ -46,8 +37,7 @@ class TeamDuty extends React.Component {
           <div className='tasks'>
         {
           tuesday && tuesday.map((tuesdayTask, index) => <div className='task' key={index}>
-              <span onClick={this.handleTask}>{tuesdayTask.taskname}</span>
-              {this.state.statusHandlerIsVisible && <StatusHandler taskInfos= {tuesdayTask.taskname} />}
+              <span onClick={e => handleTask(tuesdayTask.taskname)}>{tuesdayTask.taskname}</span>
           </div>)
         }
           </div>
@@ -57,8 +47,7 @@ class TeamDuty extends React.Component {
         <div className='tasks'>
         {
           wednesday && wednesday.map((wednesdayTask, index) => <div className='task'  key={index}>
-              <span onClick={this.handleTask}>{wednesdayTask.taskname}</span>
-              {this.state.statusHandlerIsVisible && <StatusHandler taskInfos= {wednesdayTask.taskname} />}
+              <span onClick={e => handleTask(wednesdayTask.taskname)}>{wednesdayTask.taskname}</span>
           </div>)
         }
           </div>
@@ -68,8 +57,7 @@ class TeamDuty extends React.Component {
             <div className='tasks'>
         {
           thursday && thursday.map((thursdayTask, index) => <div className='task' key={index}>
-              <span onClick={this.handleTask}>{thursdayTask.taskname}</span>
-              {this.state.statusHandlerIsVisible && <StatusHandler taskInfos= {thursdayTask.taskname} />}
+              <span onClick={e => handleTask(thursdayTask.taskname)}>{thursdayTask.taskname}</span>
           </div>)
         }
         </div>
@@ -79,31 +67,36 @@ class TeamDuty extends React.Component {
             <div className='tasks'>
         {
           friday && friday.map((fridayTask, index) => <div className='task' key={index}>
-              <span onClick={this.handleTask}>{fridayTask.taskname}</span>
-              {this.state.statusHandlerIsVisible && <StatusHandler taskInfos= {fridayTask.taskname} />}
+              <span onClick={e => handleTask(fridayTask.taskname)}>{fridayTask.taskname}</span>
           </div>)
         }
           </div>
       </div>
+      {statusHandlerIsVisible && <StatusHandler taskInfos={clickedTask} />}
     </div>)
   }
 }
 
 const mapStateToProps = (state) => {
 
+console.log('my state', state)
 
   return {
     monday: state.tasks && state.tasks.filter(task => task.day == 'MONDAY'),
     tuesday: state.tasks && state.tasks.filter(task => task.day == 'TUESDAY'),
     wednesday: state.tasks && state.tasks.filter(task => task.day == 'WEDNESDAY'),
     thursday: state.tasks && state.tasks.filter(task => task.day == 'THURSDAY'),
-    friday: state.tasks && state.tasks.filter(task => task.day == 'FRIDAY')
+    friday: state.tasks && state.tasks.filter(task => task.day == 'FRIDAY'),
+    clickedTask: state.clickedTask,
+    statusHandlerIsVisible: state.statusHandlerIsVisible
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
+
   return {
-    getTasks: () => dispatch(getTasks())
+    getTasks: () => dispatch(getTasks()),
+    handleTask: (task) => dispatch(handleTask(task))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(TeamDuty);

@@ -1,5 +1,7 @@
 const defaultState = {
-  tasks: []
+  tasks: [],
+  statusHandlerIsVisible: false,
+  clickedTask: []
 }
 
 export default function(state = defaultState, action) {
@@ -20,5 +22,13 @@ export default function(state = defaultState, action) {
         })
       });
     }
+  if (action.type == 'HANDLE_TASK') {
+    state = Object.assign({}, state, {
+      clickedTask: state.clickedTask.concat(action.task).filter(task => {
+        return task == action.task
+      }),
+      statusHandlerIsVisible: !state.statusHandlerIsVisible
+    })
+  }
   return state
 }

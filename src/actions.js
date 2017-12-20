@@ -1,4 +1,5 @@
 import axios from './axios';
+
 export function addTask(task, day) {
   var newTask = {
     taskname: task,
@@ -21,4 +22,9 @@ export function deleteTask(taskId) {
   return axios.post('/deleteTask/' + taskId).then((results) => {
    return {type: 'DELETE_TASK', taskId: taskId}
   })
+};
+
+export function handleTask(task) {
+console.log("MY TASk", task)
+  return {type: 'HANDLE_TASK', task: task}
 };
