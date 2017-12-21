@@ -20,3 +20,12 @@ CREATE TABLE tasks (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP
 );
+
+CREATE TABLE archives (
+    id SERIAL PRIMARY KEY,
+    taskName TEXT NOT NULL,
+    day TEXT NOT NULL,
+    status INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
+);

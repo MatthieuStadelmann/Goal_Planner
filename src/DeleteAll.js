@@ -6,7 +6,6 @@ class DeleteAll extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
   }
 
   render() {
@@ -16,7 +15,7 @@ class DeleteAll extends React.Component {
       <button type="button" onClick={() => {
           deleteAll()
         }}>
-        Start a New Week
+        Delete All
       </button>
     </div>)
   }

@@ -158,7 +158,30 @@ p {
 }
 
 .statusHandler {
-color: white;
+  color: white;
+  font-family: 'helvetica neue';
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 30px;
+  width: 564px;
+  height: 250px;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  margin-top: -142px;
+  margin-left: -297px;
+  z-index: 9999;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 9999;
+  background-color: rgb(141, 150, 158);
+}
+
+.completedtasks {
+
+  color: white;
   font-family: 'helvetica neue';
   text-align: center;
   display: flex;

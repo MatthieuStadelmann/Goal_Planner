@@ -13,7 +13,8 @@ import { Welcome } from './welcome';
 import  TeamDuty  from './TeamDuty';
 import { Todo }  from './Todo';
 import { combineReducers } from 'redux';
-import undoable from 'redux-undo';
+
+
 
 
 let router;

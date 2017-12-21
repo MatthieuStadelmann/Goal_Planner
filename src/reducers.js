@@ -1,11 +1,14 @@
 
+
 const defaultState = {
   tasks: [],
   statusHandlerIsVisible: false,
+  completedTasksAreVisible: false,
   clickedTask: [],
   selectedOption: 'workInProgress',
   priority: 'workInProgress'
 }
+
 
 export default function(state = defaultState, action) {
 
@@ -62,18 +65,39 @@ export default function(state = defaultState, action) {
     state = Object.assign({}, state, {priority: action.priority})
   }
 
-  const pastTasks = state.tasks;
-  console.log(pastTasks)
-
-  if (action.type == 'GET_PRIORITY') {
-
-    state = Object.assign({}, state, {
-
-      tasks: state.tasks.filter(task => {
-
-        return task.id == action.tasks.id
-      })
-    })
+  if (action.type == 'SHOW_ARCHIVES') {
+    state = Object.assign({}, state, {completedTasksAreVisible: !state.completedTasksAreVisible})
   }
+
+  if (action.type == 'GET_ARCHIVES') {
+    state = Object.assign({}, state, {archives: action.archives})
+  }
+
   return state
 }
+
+
+
+//TO be continued...
+
+
+//   if (action.type == 'GET_PRIORITY') {
+//     console.log('action', action)
+//     if (state.tasks == prevStates) {
+//       state = Object.assign({}, state, {
+//         tasks: state.tasks.filter(task => {
+//           console.log('state.tasks', state.tasks)
+//           return task.id == action.tasks.id
+//         })
+//
+//       })
+// }
+//
+//     // } else if (state.tasks !== prevStates) {
+//     //   state = Object.assign({}, state, {
+//     //     tasks: prevStates.filter(task => {
+//     //       return task.id == action.tasks.id
+//     //     })
+//     //   })
+//     // }
+//   }

@@ -44,5 +44,3 @@ const mapStateToProps = (state) => {
   return {priority: state.priority}
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SortBy);
-
-//console.log(`Selected: ${selectedOption.label}`);

@@ -166,29 +166,25 @@ app.get('/logout/', (req, res) => {
   res.redirect('/');
 });
 
-//Sort task by priority==
-
-const getPrioritizedTask = db.getPrioritizedTask;
-
-app.post('/sortTaskByPriority', (req, res) => {
-  let priority = req.body.priority;
-  let status;
-
-  if (priority == 'done') {
-    status = 1;
-  }
-  if (priority == 'workInProgress') {
-    status = 2;
-  }
-  if (priority == 'emergency') {
-    status = 3;
-  }
-  getPrioritizedTask(status).then((results) => {
-    res.json({tasks: results})
+//Archieve tasks
+const archiveThemAll = db.archiveThemAll;
+app.post('/archivedDone', (req, res) => {
+  archiveThemAll().then(() => {
+    console.log('YEAH')
   }).catch((err) => {
     console.log(err)
   })
-})
+});
+
+//Get Archives
+const getArchives = db.getArchives;
+app.get('/getArchives', (req, res) => {
+  getArchives().then((archives) => {
+  res.json({archives: archives})
+  }).catch((err) => {
+    console.log(err)
+  })
+});
 
 app.get('*', function(req, res) {
   if (!req.session.user) {
@@ -201,3 +197,29 @@ app.get('*', function(req, res) {
 app.listen(8080, function() {
   console.log("I'm listening.")
 });
+
+//To be continued
+// Sort task by priority==
+//
+// const getPrioritizedTask = db.getPrioritizedTask;
+//
+// app.post('/sortTaskByPriority', (req, res) => {
+//   let priority = req.body.priority;
+//   let status;
+//
+//   if (priority == 'done') {
+//     status = 1;
+//   }
+//   if (priority == 'workInProgress') {
+//     status = 2;
+//   }
+//   if (priority == 'emergency') {
+//     status = 3;
+//   }
+//   getPrioritizedTask(status).then((results) => {
+//     console.log('inside getPrioritizedTask', results)
+//     res.json({tasks: results})
+//   }).catch((err) => {
+//     console.log(err)
+//   })
+// })

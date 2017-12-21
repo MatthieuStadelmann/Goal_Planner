@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import {Todo} from './Todo';
 import Tasklist from './TaskList';
 import DeleteAll from './DeleteAll';
-import SortBy from './SortBy';
-
+import ArchiveDone from './ArchiveDone';
 
 
 export class App extends React.Component {
@@ -17,7 +16,7 @@ export class App extends React.Component {
           <img src='/images/lavender.svg'/>
           <h1>LAVENDER GOAL PLANNER</h1>
           <DeleteAll />
-          <SortBy />
+          <ArchiveDone />
         </div>
         <div className='todocontainer'>
           {children}

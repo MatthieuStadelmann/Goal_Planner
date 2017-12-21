@@ -48,17 +48,32 @@ export function deleteAll() {
   })
 }
 
-export function handlePriority(priority) {
-  return {type: 'HANDLE_PRIORITY', priority: priority}
+export function archiveDone() {
+  return axios.post('/archivedDone')
 }
 
-export function submitPriority(currentPriority) {
-  var newPriority = {
-    priority: currentPriority,
+export function showArchives() {
+  return {type: 'SHOW_ARCHIVES'}
+}
 
-  }
-  return axios.post('/sortTaskByPriority', newPriority).then((results) => {
-    console.log('results:', results)
-    return {type: 'GET_PRIORITY', tasks: results.data.tasks}
+export function getArchives() {
+  return axios.get('/getArchives').then((results) => {
+    return {type: 'GET_ARCHIVES', archives: results.data.archives}
   })
 }
+
+//To be continued
+
+// export function handlePriority(priority) {
+//   return {type: 'HANDLE_PRIORITY', priority: priority}
+// }
+
+// export function submitPriority(currentPriority) {
+//   var newPriority = {
+//     priority: currentPriority,
+//
+//   }
+//   return axios.post('/sortTaskByPriority', newPriority).then((results) => {
+//     return {type: 'GET_PRIORITY', tasks: results.data.tasks}
+//   })
+// }

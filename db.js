@@ -92,16 +92,46 @@ function deleteAll() {
 };
 exports.deleteAll = deleteAll;
 
-function getPrioritizedTask(status) {
-  console.log('inside getPrioritizedTask', status)
+//Archive Tasks==
+function archiveThemAll() {
   const query = `
-    SELECT taskName, day, id, status
-    FROM tasks
-    WHERE status = $1
+  INSERT INTO archives(taskname, day, status, created_at, updated_at)
+  SELECT taskname, day, status, created_at, updated_at
+  FROM tasks
+  WHERE status = 1;
   `
-  const params = [status]
-  return db.query(query, params).then((results) => {
-   return results.rows[0]
+  return db.query(query)
+};
+exports.archiveThemAll = archiveThemAll;
+
+//GET archives==
+function getArchives() {
+  const query = `
+    SELECT taskName, created_at
+    FROM archives
+    ORDER BY created_at DESC
+  `
+  return db.query(query).then((results) => {
+    return results.rows
   })
 };
-exports.getPrioritizedTask = getPrioritizedTask;
+exports.getArchives = getArchives;
+
+
+
+//To be continued
+
+// function getPrioritizedTask(status) {
+//   console.log('inside getPrioritizedTask', status)
+//   const query = `
+//     SELECT taskName, day, id, status
+//     FROM tasks
+//     WHERE status = $1
+//   `
+//   const params = [status]
+//   return db.query(query, params).then((results) => {
+//     console.log('db results', results.rows)
+//    return results.rows
+//   })
+// };
+// exports.getPrioritizedTask = getPrioritizedTask;

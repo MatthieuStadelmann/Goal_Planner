@@ -9,7 +9,6 @@ class TeamDuty extends React.Component {
 
   constructor(props) {
     super(props);
-
   };
 
   componentDidMount() {
@@ -89,8 +88,7 @@ class TeamDuty extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-
-  console.log('inside team duty', state)
+    console.log('main state', state)
 
   return {
     monday: state.tasks && state.tasks.filter(task => task.day == 'MONDAY'),

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 import TeamDuty from './TeamDuty';
 import { handleRadioChange, submitOption } from './actions';
 import { RadioGroup, Radio } from 'react-radio-group';
