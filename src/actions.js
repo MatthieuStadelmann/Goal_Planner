@@ -6,9 +6,8 @@ export function addTask(task, day) {
     day: day
   }
   return axios.post('/addTask', newTask).then((data) => {
-    console.log('newTask', newTask)
     newTask.id = data.data.id;
-    return {type:'ADD_TASK', newTask}
+    return {type: 'ADD_TASK', newTask}
   })
 };
 
@@ -20,17 +19,15 @@ export function getTasks() {
 
 export function deleteTask(taskId) {
   return axios.post('/deleteTask/' + taskId).then((results) => {
-   return {type: 'DELETE_TASK', taskId: taskId}
+    return {type: 'DELETE_TASK', taskId: taskId}
   })
 };
 
 export function handleTask(task) {
-  console.log("MY TASk", task)
   return {type: 'HANDLE_TASK', task: task}
 };
 
 export function handleRadioChange(selectedOption) {
-console.log('inside handleRadioChange', selectedOption)
   return {type: 'HANDLE_RADIO_CHANGE', selectedOption: selectedOption}
 };
 
@@ -39,11 +36,29 @@ export function submitOption(option, taskId) {
   var status = {
     taskStatus: option
   }
+
   return axios.post('/updateTaskStatus/' + taskId, status).then((results) => {
-  return {
-    type: 'UPDATE_TASK_STATUS',
-    status: results.data.status,
-    id: results.data.id
-   }
+    return {type: 'UPDATE_TASK_STATUS', status: results.data.status, id: results.data.id}
+  })
+}
+
+export function deleteAll() {
+  return axios.get('/deleteAll/').then(() => {
+    return {type: 'DELETE_TASKS'}
+  })
+}
+
+export function handlePriority(priority) {
+  return {type: 'HANDLE_PRIORITY', priority: priority}
+}
+
+export function submitPriority(currentPriority) {
+  var newPriority = {
+    priority: currentPriority,
+
+  }
+  return axios.post('/sortTaskByPriority', newPriority).then((results) => {
+    console.log('results:', results)
+    return {type: 'GET_PRIORITY', tasks: results.data.tasks}
   })
 }

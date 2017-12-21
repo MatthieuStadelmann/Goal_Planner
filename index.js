@@ -25,9 +25,7 @@ app.use(function(req, res, next) {
 });
 
 if (process.env.NODE_ENV != 'production') {
-    app.use('/bundle.js', require('http-proxy-middleware')({
-        target: 'http://localhost:8081/'
-    }));
+  app.use('/bundle.js', require('http-proxy-middleware')({target: 'http://localhost:8081/'}));
 }
 app.use(express.static('./public'));
 
@@ -110,7 +108,6 @@ app.post('/addTask', (req, res) => {
 const getTasks = db.getTasks;
 app.get('/getTasks', (req, res) => {
   getTasks().then((tasks) => {
-    console.log('GET TASK', tasks)
     res.json({tasks: tasks})
   }).catch((err) => {
     console.log(err)
@@ -122,7 +119,7 @@ const delTask = db.delTask;
 app.post('/deleteTask/:taskId', (req, res) => {
   let taskId = req.params.taskId;
   delTask(taskId).then(() => {
-    res.json({success:true})
+    res.json({success: true})
   }).catch((err) => {
     console.log(err)
   })
@@ -137,20 +134,28 @@ app.post('/updateTaskStatus/:taskId', (req, res) => {
   let status;
 
   if (selectedValue == 'done') {
-      status = 1;
+    status = 1;
   }
   if (selectedValue == 'workInProgress') {
-      status = 2;
+    status = 2;
   }
   if (selectedValue == 'emergency') {
-      status = 3;
+    status = 3;
   }
 
   updateTaskStatus(status, taskId).then((results) => {
-    res.json({
-      status: results.status,
-      id: results.id
-    })
+    res.json({status: results.status, id: results.id})
+  }).catch((err) => {
+    console.log(err)
+  })
+});
+
+//Delete All===
+
+const deleteAll = db.deleteAll;
+app.get('/deleteAll/', (req, res) => {
+  deleteAll().then((results) => {
+    res.json({success: true})
   }).catch((err) => {
     console.log(err)
   })
@@ -161,6 +166,30 @@ app.get('/logout/', (req, res) => {
   res.redirect('/');
 });
 
+//Sort task by priority==
+
+const getPrioritizedTask = db.getPrioritizedTask;
+
+app.post('/sortTaskByPriority', (req, res) => {
+  let priority = req.body.priority;
+  let status;
+
+  if (priority == 'done') {
+    status = 1;
+  }
+  if (priority == 'workInProgress') {
+    status = 2;
+  }
+  if (priority == 'emergency') {
+    status = 3;
+  }
+  getPrioritizedTask(status).then((results) => {
+    res.json({tasks: results})
+  }).catch((err) => {
+    console.log(err)
+  })
+})
+
 app.get('*', function(req, res) {
   if (!req.session.user) {
     res.redirect('/welcome/')
@@ -170,5 +199,5 @@ app.get('*', function(req, res) {
 });
 
 app.listen(8080, function() {
-    console.log("I'm listening.")
+  console.log("I'm listening.")
 });

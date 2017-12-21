@@ -1,8 +1,10 @@
+
 const defaultState = {
   tasks: [],
   statusHandlerIsVisible: false,
   clickedTask: [],
-  selectedOption: 'workInProgress'
+  selectedOption: 'workInProgress',
+  priority: 'workInProgress'
 }
 
 export default function(state = defaultState, action) {
@@ -29,7 +31,7 @@ export default function(state = defaultState, action) {
       if (state.tasks[i].id == action.task.id) {
         state = Object.assign({}, state, {
           clickedTask: state.tasks[i],
-          statusHandlerIsVisible: !state.statusHandlerIsVisible,
+          statusHandlerIsVisible: !state.statusHandlerIsVisible
         })
       }
     }
@@ -48,6 +50,30 @@ export default function(state = defaultState, action) {
         })
       }
     }
+  }
+
+  if (action.type == 'DELETE_TASKS') {
+    state = Object.assign({}, state, {
+      tasks: state.tasks = []
+    })
+  }
+
+  if (action.type == 'HANDLE_PRIORITY') {
+    state = Object.assign({}, state, {priority: action.priority})
+  }
+
+  const pastTasks = state.tasks;
+  console.log(pastTasks)
+
+  if (action.type == 'GET_PRIORITY') {
+
+    state = Object.assign({}, state, {
+
+      tasks: state.tasks.filter(task => {
+
+        return task.id == action.tasks.id
+      })
+    })
   }
   return state
 }

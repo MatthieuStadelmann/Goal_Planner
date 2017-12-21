@@ -14,9 +14,6 @@ class StatusHandler extends React.Component {
 
     const {clickedTask, submitOption, selectedOption, handleRadioChange} = this.props;
 
-
-    console.log('this.props jhweljkfa', this.props)
-
     return (<div className='statusHandler'>
 
       <form>
@@ -43,7 +40,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('handlestatus change', state)
 
   return {
     selectedOption: state.selectedOption

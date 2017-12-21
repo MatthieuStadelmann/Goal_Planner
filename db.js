@@ -80,6 +80,28 @@ function updateTaskStatus(status, id) {
   return db.query(query, params).then((results) => {
     return results.rows[0]
   })
-
 };
 exports.updateTaskStatus = updateTaskStatus;
+
+//delete All Tasks===
+function deleteAll() {
+  const query = `
+  DELETE FROM tasks
+  `
+  return db.query(query)
+};
+exports.deleteAll = deleteAll;
+
+function getPrioritizedTask(status) {
+  console.log('inside getPrioritizedTask', status)
+  const query = `
+    SELECT taskName, day, id, status
+    FROM tasks
+    WHERE status = $1
+  `
+  const params = [status]
+  return db.query(query, params).then((results) => {
+   return results.rows[0]
+  })
+};
+exports.getPrioritizedTask = getPrioritizedTask;
