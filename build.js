@@ -17,7 +17,7 @@ if (require.main == module) {
 }
 
 const conf = {
-    entry: ['babel-polyfill', __dirname + '/src/start.js'],
+    entry: [ __dirname + '/src/start.js'],
     output: {
         path: __dirname + '/public/',
         filename: 'bundle.js'
