@@ -21,7 +21,7 @@ class ArchivesShower extends React.Component {
 
     return (
       <div className='completedtasks'>
-        <h2>Completed Goals:</h2>
+        <h4>Completed Goals:</h4>
         {
           archives && archives.map((archivesGoals, index) => <div className='completedGoals' key={index}>
             <p>{archivesGoals.taskname}</p>

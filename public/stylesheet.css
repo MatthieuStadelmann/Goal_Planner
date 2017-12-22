@@ -70,6 +70,52 @@
   margin: 10px;
 }
 
+.tasknull span {
+  padding-top: 12px
+}
+.taskundefined span {
+  padding-top: 12px
+}
+.task1 span {
+  padding-top: 12px
+}
+.task2 span {
+  padding-top: 12px
+}
+.task3 span {
+  padding-top: 12px
+}
+.tasknull button {
+  position: absolute;
+  margin-left: 25px;
+}
+.taskundefined button {
+  position: absolute;
+  margin-left: 25px;
+
+
+}
+.task1 button {
+  position: absolute;
+  margin-left: 25px;
+
+
+}
+.task2 button {
+  position: absolute;
+  margin-left: 25px;
+
+
+}
+.task3 button {
+  position: absolute;
+  margin-left: 25px;
+
+
+
+}
+
+
 .taskundefined {
   border: 2px solid black;
   padding: 3px;
@@ -144,11 +190,74 @@ p {
   margin-left: 70px;
 
 }
-/*.welcome img {
-  height: 400px;
-  width: auto;
-}*/
 
+.login img {
+  height: 155px;
+
+}
+
+.registrationForm {
+  font-family: 'helvetica neue';
+  text-align: center;
+  justify-content: space-around;
+  font-size: 30px;
+  width: 420px;
+  height: 370px;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  margin-top: -104px;
+  margin-left: -203px;
+  z-index: 9999;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 9999;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.registrationForm input {
+  background: transparent;
+  color: black;
+  border: 2px solid black;
+  font-family: 'helvetica neue';
+  margin: 4px;
+  padding-left: 3px;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+
+}
+
+.registrationForm h4 {
+  margin-top: 10px;
+  padding-top: 10px;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.mainlogo {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registrationDetails {
+  margin-top: 40px;
+  height: 250px;
+  width: 275px;
+  margin-left: 65px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registrationDetails button {
+  font-size: 15px;
+}
+
+.registrationDetails a {
+  font-family: 'helvetica neue';
+}
 .logo {
   display: flex;
   flex-direction: row;
@@ -179,30 +288,28 @@ p {
 }
 
 .completedtasks {
-
-  color: white;
+  background-color: rgb(255,250,240);
   font-family: 'helvetica neue';
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   font-size: 30px;
-  width: 564px;
-  height: 250px;
+  width: 663px;
+  height: 462px;
   position: absolute;
-  top: 47%;
+  top: 43%;
   left: 50%;
   margin-top: -142px;
   margin-left: -297px;
   z-index: 9999;
-  background: rgb(255, 255, 255);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   z-index: 9999;
-  background-color: rgb(141, 150, 158);
+  overflow: scroll;
+  border-radius: 10px;
 
 }
 
-input {
+.planningday input {
   background: transparent;
   color: black;
   border: 2px solid black;
@@ -212,6 +319,8 @@ input {
   border-radius: 10px;
 }
 button {
+  font-size: 15px;
+  font-family: 'helvetica neue';
   color: black;
   background: none;
   padding: 2px;
@@ -230,4 +339,14 @@ button {
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
+}
+
+.archivecontainer {
+
+  display: flex;
+}
+.features {
+  margin-top: 15px;
+  display: flex;
+  margin-left: 465px;
 }

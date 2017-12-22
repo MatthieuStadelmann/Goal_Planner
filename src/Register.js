@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from './axios';
+import Logo from './logo'
 import { Link } from 'react-router';
 
 
@@ -45,16 +46,20 @@ export default class Register extends React.Component {
   }
   // Create the actual input Form ==============================================
   render() {
-    return (<div>
+    return (<div className='registrationcontainer'>
       {this.state.error && <div>YOU MESSED UP</div>}
       <form className="registrationForm">
+        <h4>Lavender Goal Planner</h4>
+        <div className='registrationDetails'>
         <input onChange={this.handleChange} type="text" name="first" placeholder="first name" className="registration"/>
         <input onChange={this.handleChange} type="text" name="last" placeholder="last name" className="registration"/>
         <input onChange={this.handleChange} name="email" placeholder="email" className="registration"/>
         <input onChange={this.handleChange} type="password" name="password" placeholder="password" className="registration"/>
-        <button className="button" onClick={this.handleSubmit}>Register now</button>
-        <p><Link to='/login'>Already a member? Login to our site</Link></p>
+        <button className="button" onClick={this.handleSubmit}>Sign Up</button>
+        <p><Link to='/login'>Log In</Link></p>
+      </div>
       </form>
-    </div>)
+    </div>
+  )
   }
 }

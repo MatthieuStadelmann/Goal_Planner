@@ -22,7 +22,7 @@ CREATE TABLE tasks (
 );
 
 CREATE TABLE archives (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY UNIQUE,
     taskName TEXT NOT NULL,
     day TEXT NOT NULL,
     status INTEGER,

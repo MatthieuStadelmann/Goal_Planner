@@ -15,8 +15,6 @@ import { Todo }  from './Todo';
 import { combineReducers } from 'redux';
 
 
-
-
 let router;
 
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
@@ -31,8 +29,7 @@ const notLoggedInRouter = (<Router history={hashHistory}>
 const logedInRouter = (<Provider store={store}>
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-    <Route path="/plan" component={TeamDuty}/>
-    <IndexRoute component={Todo}/>
+    <IndexRoute component={TeamDuty}/>
       <Redirect from="*" to='/'/>
     </Route>
   </Router>

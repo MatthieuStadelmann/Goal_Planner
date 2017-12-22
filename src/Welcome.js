@@ -9,14 +9,14 @@ export class Welcome extends React.Component {
 
     this.state = {};
   }
-  
+
   render() {
     return (
-      <div className="welcome">
-        <Logo />
-        <div>
+      <div className="welcomecontainer">
+        <div className='login'>
+              <Logo />
           {this.props.children}
-        </div>
+      </div>
       </div>);
   }
 }

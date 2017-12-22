@@ -6,6 +6,7 @@ export default function Logo() {
 
     <div className="mainlogo">
       <img src='/images/lavender.svg' />
+    
     </div>
   )
 }

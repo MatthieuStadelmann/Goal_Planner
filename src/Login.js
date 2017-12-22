@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from './axios';
 import {Link} from 'react-router';
-
+import Logo from './logo'
 
 //Create LOGIN with default state===============================================
 
@@ -50,10 +50,15 @@ export default class Login extends React.Component {
     return (<div>
       {this.state.error && <div>YOU MESSED UP BRO</div>}
       <form className="registrationForm">
-        <input onChange={this.handleChange} name="email" placeholder="email" className="registration"/>
-        <input onChange={this.handleChange} type="password" name="password" placeholder="password" className="registration"/>
-        <button className="button" onClick={this.handleSubmit}>Login</button>
-        <p><Link to='/'>Not a member yet? Sign up now</Link></p>
+          <h4>Lavender Goal Planner</h4>
+        <div className="registrationDetails">
+          <input onChange={this.handleChange} name="email" placeholder="email" className="registration"/>
+          <input onChange={this.handleChange} type="password" name="password" placeholder="password" className="registration"/>
+          <button className="button" onClick={this.handleSubmit}>Log In</button>
+          <p>
+            <Link to='/'>Sign Up</Link>
+          </p>
+        </div>
       </form>
     </div>)
   }

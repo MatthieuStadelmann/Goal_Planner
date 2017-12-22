@@ -15,8 +15,10 @@ export class App extends React.Component {
         <div className='nav'>
           <img src='/images/lavender.svg'/>
           <h1>LAVENDER GOAL PLANNER</h1>
-          <DeleteAll />
+          <div className='features'>
           <ArchiveDone />
+            <DeleteAll />
+        </div>
         </div>
         <div className='todocontainer'>
           {children}

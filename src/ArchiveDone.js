@@ -34,7 +34,8 @@ class ArchiveDone extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showArchives: () => dispatch(showArchives())
+    showArchives: () => dispatch(showArchives()),
+    archiveDone: () => dispatch(archiveDone())
   }
 };
 const mapStateToProps = (state) => {
