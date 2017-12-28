@@ -9,6 +9,6 @@ This application was built with React, Redux and Node.js.
 
 ## Screenshots
 
-![alt text](/public/images/Goal_Planner_Registration.png "Description goes here")
+![alt text](/public/images/Goal_Planner_main.png "Description goes here")
 
 
