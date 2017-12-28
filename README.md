@@ -5,7 +5,7 @@ Goal Planner App
 Goal Planner App with different features: Registration/Login; Add/Delete Goal; Update Goal Status (Done, In Progress, Emergency); Archive Completed Goals; Show Archives. 
 
 ## Technology
-This application was built with React & Redux and Node.js. 
+This application was built with React, Redux and Node.js. 
 
 ## Screenshots
 
