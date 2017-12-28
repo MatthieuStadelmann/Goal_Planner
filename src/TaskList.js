@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Todo } from './Todo';
 import AddTask from './AddTask';
 import { getTasks, deleteTask } from './actions';
-import DeleteTask from './DeleteTask';
+
 
 class TaskList extends React.Component {
 
@@ -28,7 +28,6 @@ class TaskList extends React.Component {
           {
             monday && monday.map((mondayTask, index) => <div className='task' key={index}>
               <p>{mondayTask.taskname}</p>
-              <DeleteTask taskId={mondayTask.id}/>
             </div>)
           }
         </div>
@@ -40,7 +39,6 @@ class TaskList extends React.Component {
         {
           tuesday && tuesday.map((tuesdayTask, index) => <div className='task' key={index}>
               <p>{tuesdayTask.taskname}</p>
-              <DeleteTask taskId={tuesdayTask.id}/>
           </div>)
         }
           </div>
@@ -52,7 +50,6 @@ class TaskList extends React.Component {
         {
           wednesday && wednesday.map((wednesdayTask, index) => <div className='task' key={index}>
               <p>{wednesdayTask.taskname}</p>
-              <DeleteTask taskId={wednesdayTask.id}/>
           </div>)
         }
           </div>
@@ -64,7 +61,6 @@ class TaskList extends React.Component {
         {
           thursday && thursday.map((thursdayTask, index) => <div className='task' key={index}>
               <p>{thursdayTask.taskname}</p>
-              <DeleteTask taskId={thursdayTask.id}/>
           </div>)
         }
         </div>
@@ -76,7 +72,6 @@ class TaskList extends React.Component {
         {
           friday && friday.map((fridayTask, index) => <div className='task' key={index}>
               <p>{fridayTask.taskname}</p>
-              <DeleteTask taskId={fridayTask.id}/>
           </div>)
         }
           </div>

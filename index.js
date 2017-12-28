@@ -170,7 +170,6 @@ app.get('/logout/', (req, res) => {
 const archiveThemAll = db.archiveThemAll;
 app.post('/archivedDone', (req, res) => {
   archiveThemAll().then(() => {
-    console.log('YEAH')
   }).catch((err) => {
     console.log(err)
   })

@@ -1,5 +1,3 @@
-
-
 const defaultState = {
   tasks: [],
   statusHandlerIsVisible: false,
@@ -8,7 +6,6 @@ const defaultState = {
   selectedOption: 'workInProgress',
   priority: 'workInProgress'
 }
-
 
 export default function(state = defaultState, action) {
 
@@ -66,7 +63,9 @@ export default function(state = defaultState, action) {
   }
 
   if (action.type == 'SHOW_ARCHIVES') {
-    state = Object.assign({}, state, {completedTasksAreVisible: !state.completedTasksAreVisible})
+    state = Object.assign({}, state, {
+      completedTasksAreVisible: !state.completedTasksAreVisible
+    })
   }
 
   if (action.type == 'GET_ARCHIVES') {
@@ -76,10 +75,7 @@ export default function(state = defaultState, action) {
   return state
 }
 
-
-
 //TO be continued...
-
 
 //   if (action.type == 'GET_PRIORITY') {
 //     console.log('action', action)
@@ -93,11 +89,11 @@ export default function(state = defaultState, action) {
 //       })
 // }
 //
-//     // } else if (state.tasks !== prevStates) {
-//     //   state = Object.assign({}, state, {
-//     //     tasks: prevStates.filter(task => {
-//     //       return task.id == action.tasks.id
-//     //     })
-//     //   })
-//     // }
+//      } else if (state.tasks !== prevStates) {
+//        state = Object.assign({}, state, {
+//          tasks: prevStates.filter(task => {
+//            return task.id == action.tasks.id
+//          })
+//        })
+//      }
 //   }

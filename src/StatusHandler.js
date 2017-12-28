@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TeamDuty from './TeamDuty';
 import { handleRadioChange, submitOption } from './actions';
 import { RadioGroup, Radio } from 'react-radio-group';
+import DeleteTask from './DeleteTask';
 
 class StatusHandler extends React.Component {
   constructor(props) {
@@ -11,15 +12,15 @@ class StatusHandler extends React.Component {
 
   render() {
 
-    const {clickedTask, submitOption, selectedOption, handleRadioChange} = this.props;
+    const { clickedTask, submitOption, selectedOption, handleRadioChange } = this.props;
 
     return (<div className='statusHandler'>
 
       <form>
-        <span>Task:{clickedTask.taskname}</span>
+        <span>Goal:{' '}{clickedTask.taskname}</span>
         <RadioGroup name="taskStatus" selectedValue={selectedOption} onChange={handleRadioChange}>
-          <Radio value="done"/>Done
-          <Radio value="workInProgress"/>Work In Progress
+          <Radio value="done"/>Done{' '}
+          <Radio value="workInProgress"/>Work In Progress{' '}
           <Radio value="emergency"/>Emergency
         </RadioGroup>
         <button type="button" onClick={(e) => {
@@ -27,6 +28,7 @@ class StatusHandler extends React.Component {
           }}>
           Submit
         </button>
+          <DeleteTask taskId={clickedTask.id}/>
       </form>
     </div>)
   }

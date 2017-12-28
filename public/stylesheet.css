@@ -85,33 +85,7 @@
 .task3 span {
   padding-top: 12px
 }
-/*.tasknull button {
-  position: absolute;
-  margin-left: 25px;
-}
-.taskundefined button {
-  position: absolute;
-  margin-left: 25px;
 
-
-}
-.task1 button {
-  position: absolute;
-  margin-left: 25px;
-
-
-}
-.task2 button {
-  position: absolute;
-  margin-left: 25px;
-
-
-}
-.task3 button {
-  position: absolute;
-  margin-left: 25px;
-
-}*/
 
 
 .taskundefined {
@@ -281,6 +255,10 @@ p {
   z-index: 9999;
   border-radius: 10px;
   background-color: rgb(224,255,255);
+}
+
+.statusHandler span {
+  text-decoration: underline;
 }
 
 .completedtasks {

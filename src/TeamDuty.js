@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { getTasks, handleTask, deleteTask, addTask } from './actions';
 import StatusHandler from './StatusHandler';
 import AddTask from './AddTask';
-import DeleteTask from './DeleteTask';
 
 class TeamDuty extends React.Component {
 
@@ -28,7 +27,6 @@ class TeamDuty extends React.Component {
             {
               monday && monday.map((mondayTask, index) => <div className={'task' + mondayTask.status} key={index}>
                 <span onClick={e => handleTask(mondayTask)}>{mondayTask.taskname}</span>
-                <DeleteTask taskId={mondayTask.id}/>
               </div>)
             }
           </div>
@@ -40,7 +38,6 @@ class TeamDuty extends React.Component {
             {
               tuesday && tuesday.map((tuesdayTask, index) => <div className={'task' + tuesdayTask.status} key={index}>
                 <span onClick={e => handleTask(tuesdayTask)}>{tuesdayTask.taskname}</span>
-                <DeleteTask taskId={tuesdayTask.id}/>
               </div>)
             }
           </div>
@@ -52,7 +49,6 @@ class TeamDuty extends React.Component {
             {
               wednesday && wednesday.map((wednesdayTask, index) => <div className={'task' + wednesdayTask.status} key={index}>
                 <span onClick={e => handleTask(wednesdayTask)}>{wednesdayTask.taskname}</span>
-                <DeleteTask taskId={wednesdayTask.id}/>
               </div>)
             }
           </div>
@@ -64,7 +60,6 @@ class TeamDuty extends React.Component {
             {
               thursday && thursday.map((thursdayTask, index) => <div className={'task' + thursdayTask.status} key={index}>
                 <span onClick={e => handleTask(thursdayTask)}>{thursdayTask.taskname}</span>
-                <DeleteTask taskId={thursdayTask.id}/>
               </div>)
             }
           </div>
@@ -76,7 +71,6 @@ class TeamDuty extends React.Component {
             {
               friday && friday.map((fridayTask, index) => <div className={'task' + fridayTask.status} key={index}>
                 <span onClick={e => handleTask(fridayTask)}>{fridayTask.taskname}</span>
-                <DeleteTask taskId={fridayTask.id}/>
               </div>)
             }
           </div>

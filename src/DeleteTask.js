@@ -11,13 +11,13 @@ class DeleteTask extends React.Component {
 
   render() {
     const { deleteTask, taskId } = this.props;
-  
+
 
     return (<div className='taskcontainer'>
       <button type="button" onClick={() => {
           deleteTask(taskId)
         }}>
-        x
+        Delete Goal
       </button>
     </div>)
   }
