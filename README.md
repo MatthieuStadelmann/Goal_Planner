@@ -15,6 +15,4 @@ This application was built with React, Redux and Node.js.
 ### Update Goal Status:
 ![alt text](/public/images/Goal_Planner_status.png "Description goes here")
 
-### Login & Register:
-![alt text](/public/images/Goal_Planner_Registration.png "Description goes here")
 
