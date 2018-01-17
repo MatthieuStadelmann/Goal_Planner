@@ -1,5 +1,5 @@
 # Lavender Goal Planner
-Goal Planner App (work in progress)
+Goal Planner App 
 
 ## Overview
 Goal Planner App with different features: Registration/Login; Add/Delete Goal; Update Goal Status (Done, In Progress, Emergency); Archive Completed Goal; Show Archives. 
